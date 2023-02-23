@@ -1,17 +1,15 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue';
+import { reactive, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import sourceData from '@/data.json'
+import { Destination } from '@/interfaces/destination';
 const route = useRoute()
-const destinationId = computed(()=>{
-  return parseInt(route.params.id as string)
-})
-const destination = computed(()=>{
-  const result = sourceData.destinations.find(destination => destination.id === destinationId.value )
-  if (result === undefined) {
-    throw new Error("invalid destination!")
-  }
-  return result
+let destination: Destination = reactive(new Destination())
+// FIXME:
+// 壊れている
+onMounted(async() => {
+  const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}`)
+  const data: Destination = await response.json()
+  destination = data
 })
 </script>
 
