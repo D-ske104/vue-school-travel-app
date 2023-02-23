@@ -11,6 +11,7 @@ const routes = [
   {path: '/hawaii', name: 'Hawaii', component: Hawaii},
   {path: '/jamaica', name: 'Jamaica', component: Jamaica},
   {path: '/panama', name: 'Panama', component: Panama},
+  {path: '/destination/:id', component: ()=>import('@/views/DestinationShow.vue')},
 ]
 
 const router = createRouter({
