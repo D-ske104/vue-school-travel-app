@@ -6,11 +6,9 @@ const route = useRoute()
 let destination: Destination = reactive(new Destination())
 // FIXME:
 // 壊れている
-onMounted(async() => {
-  const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}`)
-  const data: Destination = await response.json()
-  destination = data
-})
+const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}`)
+const data: Destination = await response.json()
+destination = data
 </script>
 
 <template>
