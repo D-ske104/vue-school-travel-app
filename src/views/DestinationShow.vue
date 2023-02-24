@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { Destination } from '@/interfaces/destination';
+import { Destination } from '@/classes/destination';
 const route = useRoute()
 let destination: Destination = reactive(new Destination())
 // FIXME:
