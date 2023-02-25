@@ -3,6 +3,7 @@ import { computed, defineProps } from 'vue';
 import { useRoute } from 'vue-router';
 import sourceData from '@/data.json'
 import ExperienceCard from '@/components/ExperienceCard.vue';
+import GoBack from '@/components/GoBack.vue';
 const route = useRoute()
 
 interface Props {
@@ -25,6 +26,7 @@ const destination = computed(() => {
 <template>
   <section class="destination">
     <h1>{{ destination.name }}</h1>
+    <GoBack></GoBack>
     <div class="destination-details">
       <img :src="`/images/${destination.image}`" :alt="destination.name">
       <p>{{ destination.description }}</p>
