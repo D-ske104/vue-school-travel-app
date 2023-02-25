@@ -36,6 +36,7 @@ const destination = computed(() => {
       v-for="experience in destination.experiences"
       :key="experience.slug"
       :to="{name: 'experience.show', params: {experienceSlug: experience.slug}}"
+      v-bind="$attrs"
     >
       <ExperienceCard
         :experience="experience"
