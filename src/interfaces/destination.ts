@@ -33,5 +33,5 @@ interface Destination {
 //   description: string = description
 //   experiences: Experience[] = experiences
 // }
-
-export {destination, Destination}
+export { destination }
+export type { Destination }

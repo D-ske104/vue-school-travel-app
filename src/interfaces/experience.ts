@@ -23,5 +23,5 @@ interface Experience {
 //   image: string = image
 //   description: string = description
 // }
-
-export {experience, Experience}
+export { experience }
+export type { Experience }

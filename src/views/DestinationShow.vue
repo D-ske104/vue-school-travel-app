@@ -1,20 +1,24 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { Destination } from '@/classes/destination';
+import sourceData from '@/data.json'
 const route = useRoute()
 
-let destination = ref<Destination>()
-const initData = async () => {
-  const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}.json`)
-  const data: Destination = await response.json()
-  destination.value = data
-}
-watch(
-  ()=>route.params,
-  initData,
-  { immediate: true }
-)
+const destinationId = computed(() => {
+  const id = route.params.id
+  if (Array.isArray(id)) {
+    throw new Error(`"route.params.id" only accepts string, and not string[]. You actually got "${route.params.id}".`)
+  }
+  return parseInt(id)
+})
+
+const destination = computed(() => {
+  const destination = sourceData.destinations.find(
+    destination => destination.id === destinationId.value
+  )
+  if (destination)
+  return destination
+})
 </script>
 
 <template>
