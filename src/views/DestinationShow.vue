@@ -41,5 +41,6 @@ const destination = computed(() => {
         :experience="experience"
       ></ExperienceCard>
     </router-link>
+    <router-view />
   </section>
 </template>
