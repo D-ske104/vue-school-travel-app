@@ -1,20 +1,18 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, defineProps } from 'vue';
 import { useRoute } from 'vue-router';
 import sourceData from '@/data.json'
 const route = useRoute()
 
-const destinationId = computed(() => {
-  const id = route.params.id
-  if (Array.isArray(id)) {
-    throw new Error(`"route.params.id" only accepts string, and not string[]. You actually got "${route.params.id}".`)
-  }
-  return parseInt(id)
-})
+interface Props {
+  id: string,
+}
+
+const props = defineProps<Props>()
 
 const destination = computed(() => {
   const destination = sourceData.destinations.find(
-    destination => destination.id === destinationId.value
+    destination => destination.id === parseInt(props.id)
   )
   if (destination)
   return destination
