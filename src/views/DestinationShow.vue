@@ -5,14 +5,14 @@ import sourceData from '@/data.json'
 const route = useRoute()
 
 interface Props {
-  id: string,
+  id: number,
 }
 
 const props = defineProps<Props>()
 
 const destination = computed(() => {
   const destination = sourceData.destinations.find(
-    destination => destination.id === parseInt(props.id)
+    destination => destination.id === props.id
   )
   if (destination)
   return destination

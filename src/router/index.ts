@@ -7,9 +7,7 @@ const routes = [
     path: '/destination/:id/:slug',
     name: 'destination.show',
     component: ()=>import('@/views/DestinationShow.vue'),
-    props: {
-      newsletterPopup: false,
-    },
+    props: (route: {params: {id: string, slug?: string}}) => ({id: parseInt(route.params.id)}) // FIXME
   },
 ]
 
