@@ -7,8 +7,14 @@ const routes = [
     path: '/destination/:id/:slug',
     name: 'destination.show',
     component: ()=>import('@/views/DestinationShow.vue'),
-    props: (route: {params: {id: string, slug?: string}}) => ({id: parseInt(route.params.id)}) // FIXME
+    props: (route: {params: {id: string, slug?: string}}) => ({...route.params, id: parseInt(route.params.id)}) // FIXME
   },
+  {
+    path: '/destination/:id/:slug/:experienceSlug',
+    name: 'experience.show',
+    component: ()=>import('@/views/ExperienceShow.vue'),
+    props: (route: {params: {id: string}}) => ({...route.params, id: parseInt(route.params.id)}) // FIXME
+  }
 ]
 
 const router = createRouter({

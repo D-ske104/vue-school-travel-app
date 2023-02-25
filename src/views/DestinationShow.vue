@@ -32,10 +32,14 @@ const destination = computed(() => {
   </section>
   <section class="experiences">
     <h2>Top Experiences in {{ destination.name }}</h2>
-    <ExperienceCard
+    <router-link
       v-for="experience in destination.experiences"
-      :experience="experience"
       :key="experience.slug"
-    ></ExperienceCard>
+      :to="{name: 'experience.show', params: {experienceSlug: experience.slug}}"
+    >
+      <ExperienceCard
+        :experience="experience"
+      ></ExperienceCard>
+    </router-link>
   </section>
 </template>
