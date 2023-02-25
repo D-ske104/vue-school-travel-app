@@ -3,16 +3,14 @@ import { reactive, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { Destination } from '@/classes/destination';
 const route = useRoute()
-let destination: Destination = reactive(new Destination())
-// FIXME:
-// 壊れている
-const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}`)
+
+const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}.json`)
 const data: Destination = await response.json()
-destination = data
+const destination = reactive(data)
 </script>
 
 <template>
-  <section>
+  <section v-if="destination" class="destination">
     <h1>{{ destination.name }}</h1>
     <div class="destination-details">
       <img :src="`/images/${destination.image}`" :alt="destination.name">
