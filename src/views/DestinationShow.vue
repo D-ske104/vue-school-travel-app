@@ -1,12 +1,20 @@
 <script setup lang="ts">
-import { reactive, computed, onMounted } from 'vue';
+import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { Destination } from '@/classes/destination';
 const route = useRoute()
 
-const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}.json`)
-const data: Destination = await response.json()
-const destination = reactive(data)
+let destination = ref<Destination>()
+const initData = async () => {
+  const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}.json`)
+  const data: Destination = await response.json()
+  destination.value = data
+}
+watch(
+  ()=>route.params,
+  initData,
+  { immediate: true }
+)
 </script>
 
 <template>
