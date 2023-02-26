@@ -24,26 +24,28 @@ const destination = computed(() => {
 </script>
 
 <template>
-  <section class="destination">
-    <h1>{{ destination.name }}</h1>
-    <GoBack></GoBack>
-    <div class="destination-details">
-      <img :src="`/images/${destination.image}`" :alt="destination.name">
-      <p>{{ destination.description }}</p>
-    </div>
-  </section>
-  <section class="experiences">
-    <h2>Top Experiences in {{ destination.name }}</h2>
-    <router-link
-      v-for="experience in destination.experiences"
-      :key="experience.slug"
-      :to="{name: 'experience.show', params: {experienceSlug: experience.slug}}"
-      v-bind="$attrs"
-    >
-      <ExperienceCard
-        :experience="experience"
-      ></ExperienceCard>
-    </router-link>
-    <router-view />
-  </section>
+  <div>
+    <section class="destination">
+      <h1>{{ destination.name }}</h1>
+      <GoBack></GoBack>
+      <div class="destination-details">
+        <img :src="`/images/${destination.image}`" :alt="destination.name">
+        <p>{{ destination.description }}</p>
+      </div>
+    </section>
+    <section class="experiences">
+      <h2>Top Experiences in {{ destination.name }}</h2>
+      <router-link
+        v-for="experience in destination.experiences"
+        :key="experience.slug"
+        :to="{name: 'experience.show', params: {experienceSlug: experience.slug}}"
+        v-bind="$attrs"
+      >
+        <ExperienceCard
+          :experience="experience"
+        ></ExperienceCard>
+      </router-link>
+      <router-view />
+    </section>
+  </div>
 </template>
