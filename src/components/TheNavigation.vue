@@ -14,5 +14,6 @@ const destinations = reactive(sourceData.destinations)
       >
         {{ destination.name }}
       </router-link>
+      <router-link :to="{name: 'protected'}">DashBoard</router-link>
   </div>
 </template>
