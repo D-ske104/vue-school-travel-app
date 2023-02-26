@@ -6,7 +6,7 @@ import TheNavigation from '@/components/TheNavigation.vue'
   <TheNavigation/>
   <div class="container">
     <router-view v-slot="{Component}">
-      <transition name="moveUp" mode="out-in">
+      <transition name="fade" mode="out-in">
         <component :is="Component" :key="$route.path"></component>
       </transition>
     </router-view>
@@ -14,7 +14,15 @@ import TheNavigation from '@/components/TheNavigation.vue'
 </template>
 
 <style lang="css">
-.moveUp-enter-active {
+.fade-enter-active,
+.fade-leave-active{
+  transition: opacity 0.3s;
+}
+.fade-enter-from,
+.fade-leave-to{
+  opacity:0;
+}
+/* .moveUp-enter-active {
   animation: fadeIn 1s ease-in;
 }
 @keyframes fadeIn {
@@ -28,7 +36,7 @@ import TheNavigation from '@/components/TheNavigation.vue'
 @keyframes moveUp {
   0% { transform: translateY(0); }
   100% { transform: translateY(-400px); }
-}
+} */
 /* .slide-enter-active,
 .slide-leave-active{
   transition: opacity 1s, transform 1s;
