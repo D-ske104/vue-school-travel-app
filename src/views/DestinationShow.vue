@@ -20,6 +20,8 @@ const destination = computed(() => {
   }
   return destination
 })
+
+const destinationImgUrl: string = await import (`~/images/${destination.value.image}`)
 </script>
 
 <template>
@@ -28,7 +30,7 @@ const destination = computed(() => {
       <h1>{{ destination.name }}</h1>
       <GoBack></GoBack>
       <div class="destination-details">
-        <img :src="`/images/${destination.image}`" :alt="destination.name">
+        <img :src="destinationImgUrl" :alt="destination.name">
         <p>{{ destination.description }}</p>
       </div>
     </section>

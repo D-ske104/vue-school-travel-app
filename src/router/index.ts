@@ -63,7 +63,7 @@ const routes: RouteRecordRaw[] = [
 ]
 
 const router = createRouter({
-  history: createWebHistory('/vue-school-travel-app/'),
+  history: createWebHistory(),
   routes,
   scrollBehavior (to, from, savedPosition) {
     return savedPosition || new Promise(resolve=>{
