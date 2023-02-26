@@ -3,13 +3,18 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 
 const router = useRouter()
+const route = router.currentRoute
 const username = ref("")
 const password = ref("")
 
 const login = () => {
   // Auth user against API
   window.user = username.value
-  router.push({name: 'protected'})
+  const redirectPath = route.value.query.redirect || '/protected'
+  if (Array.isArray(redirectPath)) {
+    throw new Error('Invalid query parameter for redirect.')
+  }
+  router.push(redirectPath)
 }
 </script>
 
