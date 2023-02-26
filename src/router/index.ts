@@ -51,16 +51,4 @@ const router = createRouter({
   }
 })
 
-// router.beforeEach(async(to, _from) =>{
-//   const exists = sourceData.destinations.find(
-//     destination => {
-//       if (Array.isArray(to.params.id)) {
-//         throw new Error("id is not Array.")
-//       }
-//       destination.id === parseInt(to.params.id)
-//     }
-//   )
-//   if (!exists) return {name: 'NotFound'}
-// })
-
 export default router

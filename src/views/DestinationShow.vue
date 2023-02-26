@@ -4,7 +4,6 @@ import { useRoute } from 'vue-router';
 import sourceData from '@/data.json'
 import ExperienceCard from '@/components/ExperienceCard.vue';
 import GoBack from '@/components/GoBack.vue';
-const route = useRoute()
 
 interface Props {
   id: number,
