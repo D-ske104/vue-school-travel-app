@@ -10,5 +10,5 @@ export default defineConfig({
     },
   },
   plugins: [vue()],
-  base: '/vue-school-travel-app/'
+  base: (process.env.NODE_ENV === 'production') ? '/vue-school-travel-app/' : '/',
 })
