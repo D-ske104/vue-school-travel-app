@@ -7,7 +7,7 @@ interface Props {
 }
 const props = defineProps<Props>()
 
-const experienceImgUrl: string = await import (`~/images/${props.experience.image}`)
+const experienceImgUrl: string = await import (`~/images/${props.experience.slug}.jpg`)
 </script>
 
 <template>

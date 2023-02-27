@@ -21,7 +21,7 @@ const destination = computed(() => {
   return destination
 })
 
-const destinationImgUrl: string = await import (`~/images/${destination.value.image}`)
+const destinationImgUrl: string = await import (`~/images/${destination.value.slug}.jpg`)
 </script>
 
 <template>

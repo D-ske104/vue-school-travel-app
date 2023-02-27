@@ -25,7 +25,7 @@ const experience = computed(()=>{
   }
   return experience
 })
-const experienceImgUrl: string = await import (`~/images/${experience.value.image}`)
+const experienceImgUrl: string = await import (`~/images/${experience.value.slug}.jpg`)
 </script>
 
 <template>

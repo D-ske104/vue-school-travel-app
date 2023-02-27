@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import sourceData from '@/data.json'
+import { Destination } from '@/interfaces/destination'
 const destinations = reactive(sourceData.destinations)
-const destinationImgUrl = import.meta.glob(`./images/*.jpg`)
+const destinationImages: Record<string, string | undefined> = import.meta.glob(`~/images/*.jpg`, {eager: true})
+const destinationImgUrl = (destination: Destination) => {
+  const image = destinationImages[`./images/${destination.image}`]
+  return image ? image : ''
+}
+debugger
 </script>
 
 <template>
@@ -18,7 +24,7 @@ const destinationImgUrl = import.meta.glob(`./images/*.jpg`)
           v-text="destination.name"
         ></h2>
         <img
-          :src="`./images/${destination.image}`"
+          :src="destinationImgUrl(destination)"
           :alt="destination.name"
         >
       </router-link>
